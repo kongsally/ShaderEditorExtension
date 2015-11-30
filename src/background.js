@@ -5,6 +5,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 //  console.log('incoming message from injected script');
  // console.log(request);
 
+ $("#message").text(request.canvas_message);
+ $("#avg_ms").text("Average ms: " + request.avg_ms);
+ if(request.p_id !== undefined) {
+    $("#programs_options").append("<option value='" + request.p_id + 
+      "'>" + request.p_id + "</option>");
+  }
+
   // Messages from content scripts should have sender.tab set
   if (sender.tab) {
     var tabId = sender.tab.id;

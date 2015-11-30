@@ -98,7 +98,22 @@ function f( s ) {
 
 		programs[ p.__uuid ] = el;
 
-		//logMsg( 'addProgram', p.__uuid );
+		logMsg( 'addProgram', p.__uuid );
+		console.log("hello");
+		// var eventObj = new CustomEvent("shader_program", 
+  //                               {
+  //                                   detail: {
+  //                                       p_id: p.__uuid,
+  //                                       time: new Date(),
+  //                                   },
+  //                                   bubbles: true,
+  //                                   cancelable: true
+  //                               }
+  //                           );
+  //       console.log(eventObj);
+  //       document.dispatchEvent(eventObj);
+  //       console.log("event dispatched");
+   
 		window.postMessage( { source: 'WebGLShaderEditor', method: 'addProgram', uid: p.__uuid }, '*');
 
 	}
@@ -982,6 +997,7 @@ function logMsg() {
 	}
 	var p = document.createElement( 'p' );
 	p.textContent = args.join( ' ' );
+	if(log !== null)
 	log.appendChild( p );
 
 }
