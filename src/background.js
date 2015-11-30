@@ -9,18 +9,24 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
  $("#message").text(request.canvas_message);
 
  if(request.programs !== undefined) {
-  console.log(request.programs);
+  $("#programs_options").empty();
+  $("#programs_options").append("<option value='' disabled selected>Select a shader</option>")
   programs = JSON.parse(request.programs);
   for (var i = 1; i <= Object.keys(programs).length; i++) {
-    console.log(programs[i]);
-    if(programs[i] !== undefined)
+    var key = Object.keys(programs)[i];
+    if(programs[key] !== undefined)
     $("#programs_options").append("<option value='" + i + 
-      "'>" + programs[i] + "</option>");
+      "'>" + programs[key] + "</option>");
   }
  }
 
  if(request.avg_ms !== undefined)
  $("#avg_ms").text("Average ms: " + request.avg_ms);
+
+ if(request.x !== undefined && request.y !== undefined) {
+  $("#mouse_pos").text('Mouse position: ' + Math.round(request.x) +
+                                 ',' + Math.round(request.y));
+ }
 
   // Messages from content scripts should have sender.tab set
   if (sender.tab) {

@@ -17,3 +17,6 @@ document.addEventListener("avg_ms", function(data) {
     chrome.runtime.sendMessage({ avg_ms: data.detail.avg_ms});
 });
 
+document.addEventListener("mouse_pos", function(data) {
+	chrome.runtime.sendMessage({ x: data.detail.x, y: data.detail.y });
+});

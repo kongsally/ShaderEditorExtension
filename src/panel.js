@@ -112,8 +112,8 @@ function f( s ) {
         //                     );
         // console.log(eventObj);
         // document.dispatchEvent(eventObj);
-  
-        localStorage.setItem(Object.keys(window.programs).length, p.__uuid);
+  //       console.log("event dispatched");
+        localStorage.setItem(p.__uuid, p.__uuid);
    
 		window.postMessage( { source: 'WebGLShaderEditor', method: 'addProgram', uid: p.__uuid }, '*');
 
