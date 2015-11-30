@@ -1,6 +1,6 @@
 var canvas_list = document.getElementsByTagName("canvas");
 console.log(canvas_list[0]);
-console.log(window.programs);
+console.log(window.localStorage);
 
 var canvas_message = "";
 if(canvas_list.length > 0) {
@@ -11,6 +11,7 @@ if(canvas_list.length > 0) {
 }
 
 chrome.runtime.sendMessage({
-	program: JSON.stringify(window.programs),
+	programs: JSON.stringify(window.localStorage),
 	canvas_message: canvas_message
 });
+

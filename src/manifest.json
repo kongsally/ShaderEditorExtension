@@ -11,12 +11,12 @@
 	"description": "Live editing shaders in the browser.",
 	"background": {
 		"scripts": [
-			"background.js"
+			"jquery.min.js","background.js"
 		]
 	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["jquery.min.js","content_script.js", "popup.js", "checkPage.js"],
+		"js": ["content_script.js"],
 		"run_at": "document_end",
 		"all_frames": true
 	} ],
@@ -24,8 +24,7 @@
 		"http://*/*",
 		"https://*/*",
 		"webNavigation",
-		"storage",
-		"activeTab"
+		"storage"
 	],
 	"browser_action": {
 	   "default_popup": "popup.html"

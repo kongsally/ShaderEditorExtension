@@ -14,12 +14,6 @@ window.addEventListener('message', function(event) {
 });
 
 document.addEventListener("avg_ms", function(data) {
-    console.log(data.detail.avg_ms);
     chrome.runtime.sendMessage({ avg_ms: data.detail.avg_ms});
-});
-
-document.addEventListener("shader_program", function(data) {
-    console.log(data.detail.p_id);
-    chrome.runtime.sendMessage({ p_id: data.detail.p_id});
 });
 

@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   checkPageButton.addEventListener('click', function() {
     chrome.tabs.executeScript(null, {file: "checkPage.js"});
+    
+  	document.getElementById("popup_wrapper").style.visibility = "visible";
   }, false);
 
   chrome.tabs.executeScript(null, {file: "checkPage.js"});
