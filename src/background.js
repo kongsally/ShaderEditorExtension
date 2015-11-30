@@ -11,6 +11,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
  if(request.programs !== undefined) {
   console.log(request.programs);
   programs = JSON.parse(request.programs);
+  $("#programs_options").empty();
+  $("#programs_options").append("<option value='' disabled selected>Select a shader</option>")
   for (var i = 1; i <= Object.keys(programs).length; i++) {
     console.log(programs[i]);
     if(programs[i] !== undefined)
