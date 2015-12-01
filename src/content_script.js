@@ -31,7 +31,7 @@ var checkPage = function() {
 	});
 }
 
-$("<div id = 'total_wrapper'><h4 id='profiler_title'>WebGL Fragment Shader Profiler</h4><div id = 'popup_wrapper'><div id ='message'></div><div id ='avg_ms'></div><select id='programs_options'><option value='' disabled selected>Select a shader</option></select></div><button id='checkPage'>Profile</button></div>").appendTo("body");
+$("<div id = 'total_wrapper'><h4 id='profiler_title'>WebGL Fragment Shader Profiler</h4><div id = 'popup_wrapper'><div id ='message'></div><div id ='mouse_pos'></div><div id ='avg_ms'></div><select id='programs_options'><option value='' disabled selected>Select a shader</option></select></div><button id='checkPage'>Profile</button></div>").appendTo("body");
 $(document).ready(function() {
   $("#checkPage").click(checkPage);
 });
@@ -55,6 +55,12 @@ document.addEventListener("avg_ms", function(data) {
 	$("#avg_ms").text("Average ms: " + 
 	Math.round(data.detail.avg_ms * 100) / 100);
     chrome.runtime.sendMessage({ avg_ms: data.detail.avg_ms});
+});
+
+document.addEventListener("mouse_pos", function(data) {
+	$("#mouse_pos").text("Pixel (" + Math.round(data.detail.x) 
+		+ " , " + Math.round(data.detail.y) + ")");
+	chrome.runtime.sendMessage({ avg_ms: data.detail.avg_ms});
 });
 
 
