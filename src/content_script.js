@@ -31,7 +31,7 @@ var checkPage = function() {
 	});
 }
 
-$("<div id = 'total_wrapper'><h4 id='profiler_title'>WebGL Fragment Shader Profiler</h4><button id='checkPage'>Profile</button><div id = 'popup_wrapper'><div id ='message'></div><div id ='avg_ms'></div><select id='programs_options'><option value='' disabled selected>Select a shader</option></select></div></div>").appendTo("body");
+$("<div id = 'total_wrapper'><h4 id='profiler_title'>WebGL Fragment Shader Profiler</h4><div id = 'popup_wrapper'><div id ='message'></div><div id ='avg_ms'></div><select id='programs_options'><option value='' disabled selected>Select a shader</option></select></div><button id='checkPage'>Profile</button></div>").appendTo("body");
 $(document).ready(function() {
   $("#checkPage").click(checkPage);
 });
