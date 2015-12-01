@@ -8,6 +8,9 @@
 		"48": "icon_48.png",
 		"16": "icon_16.png"
 	},
+
+	"web_accessible_resources": ["popup.html"],
+
 	"description": "Live editing shaders in the browser.",
 	"background": {
 		"scripts": [
@@ -16,19 +19,23 @@
 	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["content_script.js"],
+		"css": ["main.css"],
+		"js": ["jquery.min.js","content_script.js"],
 		"run_at": "document_end",
 		"all_frames": true
 	} ],
+	"browser_action": { 
+		"default_title": "My extension", 
+		"default_icon": "icon.png" 
+	},
 	"permissions": [
 		"http://*/*",
 		"https://*/*",
 		"webNavigation",
-		"storage"
+		"storage",
+		"tabs",
+		"activeTab"
 	],
-	"browser_action": {
-	   "default_popup": "popup.html"
-	  },
 	"manifest_version": 2,
 	"content_security_policy": "default-src 'self' chrome-extension-resource: ; img-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; connect-src *; frame-src *;",
 	"web_accessible_resources": [

@@ -5,25 +5,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
  //  console.log('incoming message from injected script');
  console.log(request);
 
- if(request.canvas_message !== undefined)
- $("#message").text(request.canvas_message);
-
- if(request.programs !== undefined) {
-  console.log(request.programs);
-  programs = JSON.parse(request.programs);
-  $("#programs_options").empty();
-  $("#programs_options").append("<option value='' disabled selected>Select a shader</option>")
-  for (var i = 1; i <= Object.keys(programs).length; i++) {
-    console.log(programs[i]);
-    if(programs[i] !== undefined)
-    $("#programs_options").append("<option value='" + i + 
-      "'>" + programs[i] + "</option>");
-  }
- }
-
- if(request.avg_ms !== undefined)
- $("#avg_ms").text("Average ms: " + request.avg_ms);
-
   // Messages from content scripts should have sender.tab set
   if (sender.tab) {
     var tabId = sender.tab.id;
