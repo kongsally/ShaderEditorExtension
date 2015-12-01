@@ -16,7 +16,6 @@ var dispatchEvent = function(mouse_pos) {
                             },
                         });
     document.dispatchEvent(eventObj);
-    console.log(eventObj);
 };
 
 var checkPage = function() {
