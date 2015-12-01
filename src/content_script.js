@@ -7,7 +7,6 @@ var checkPage = function() {
 	var canvas_message = "";
 	if(canvas_list.length > 0) {
 	  var canvas = canvas_list[0];
-	  canvas_message = "This page has an HTML5 canvas";
 	  document.getElementById("programs_options").style.visibility = "visible";
 	  if(Object.keys(localStorage).length > 0) {
 		programs = window.localStorage;
