@@ -1,4 +1,24 @@
 
+var getMousePos = function(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+    };
+
+var dispatchEvent = function(mouse_pos) {
+    var eventObj = new CustomEvent("mouse_pos", {
+                            detail: {
+                                x: mouse_pos.x,
+                                y: mouse_pos.y,
+                                time: new Date(),
+                            },
+                        });
+    document.dispatchEvent(eventObj);
+    console.log(eventObj);
+};
+
 var checkPage = function() {
 
 	document.getElementById("popup_wrapper").style.visibility = "visible";
@@ -7,6 +27,13 @@ var checkPage = function() {
 	var canvas_message = "";
 	if(canvas_list.length > 0) {
 	  var canvas = canvas_list[0];
+	  
+      // Mouse movement listener: update mousePos and write to screen
+      canvas.addEventListener('mousemove', function(evt) {
+            var mousePos = getMousePos(canvas, evt);
+            dispatchEvent(mousePos);
+      }, false);
+
 	  document.getElementById("programs_options").style.visibility = "visible";
 	  if(Object.keys(localStorage).length > 0) {
 		programs = window.localStorage;
