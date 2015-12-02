@@ -9,8 +9,6 @@
 		"16": "icon_16.png"
 	},
 
-	"web_accessible_resources": ["popup.html"],
-
 	"description": "Live editing shaders in the browser.",
 	"background": {
 		"scripts": [
@@ -19,8 +17,8 @@
 	},
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"css": ["main.css"],
-		"js": ["jquery.min.js","content_script.js"],
+		"css": ["profiler/main.css"],
+		"js": ["jquery.min.js","profiler/content_script.js"],
 		"run_at": "document_end",
 		"all_frames": true
 	} ],
